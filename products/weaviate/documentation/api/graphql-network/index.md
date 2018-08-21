@@ -1,7 +1,7 @@
 ---
 layout: article-start
-title: GraphQL Local function 2
-description: Explanation of a GraphQL Local function.
+title: GraphQL Network
+description: Explanation of the GraphQL Network functions.
 topic: API
 tags: ['weaviate', 'API', 'GraphQL']
 video-link: 

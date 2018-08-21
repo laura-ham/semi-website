@@ -1,7 +1,7 @@
 ---
 layout: article-start
-title: GraphQL Local function 1
-description: Explanation of a GraphQL Local function.
+title: GraphQL Local
+description: Explanation of the GraphQL Local functions.
 topic: API
 tags: ['weaviate', 'API', 'GraphQL']
 video-link: 
@@ -9,3 +9,5 @@ video-caption:
 menu-order: 2
 open-graph-type: article
 ---
+
+## Get local Things
