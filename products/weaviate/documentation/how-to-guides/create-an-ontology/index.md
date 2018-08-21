@@ -10,15 +10,30 @@ menu-order: 2
 open-graph-type: article
 ---
 
-<article>
+## Index
+
+- [What is an ontology and why do you need it?](#what-is-an-ontology-and-why-do-you-need-it)
+- [How to build an ontology?](#how-to-build-an-ontology)
+	- [Steps to build an ontology](#steps-to-build-an-ontology)
+	- [Create an ontology for Weaviate](#create-an-ontology-for-weaviate)
+		- [Properties](#properties)
+		- [Example](#example)
+- [Design tips](#design-tips)
+	- [Schema structure](#schema-structure)
+	- [Naming](#naming)
+
 
 ## What is an ontology and why do you need it?
+
 In computer science, an ontology is an explicit description of concepts in a domain (classes), with properties describing features, attributes, and interrelationships of the entities. As a decentralized ecosystem, Weaviate connects graph-based instances, where data is semantically stored. Semantic schemas or ontologies form the backbone of a semantic network and are required to link data in Weaviate. A well-formulated ontology is not only valuable for describing the meaning of data within Weaviate instances, it also enables linking data between them. Because ontologies of multiple Weaviate instances share structural elements and semantic definitions, they are ready for data enrichment.
 
 An ontology and a set of data instances form a knowledge base. To initialize a Weaviate instance for your knowledge base, all the data should be structured according to the semantic schema you created. A semantic schema supported by Weaviate consists of a list of classes in a domain of discourse, with properties for each concept describing features and attributes of the concept. Properties have datatype restrictions and may be references to other classes. Weaviate ontologies typically do not have a class hierarchy, which enables usage in multiple domains. 
 
+
 ## How to build an ontology
+
 Developing an ontology includes defining classes, properties and describing allowed values and references for the properties. The structure of the ontology is simple and straightforward as described, but building an ontology from scratch can be challenging. Suggested is to take an iterative approach to ontology development. It is important to keep in mind that an ontology is a model of the reality of the world, so the classes should describe concepts and objects that reflect this reality (in your domain). 
+
 
 ### Steps to build an ontology 
 (Inspired by [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf)):
@@ -36,7 +51,8 @@ Keywords are used to determine the context of the word, based on the location of
 Keywords are always stored in an array containing a weight. The keyword itself should be available in the vector space. The weights are -based on the chosen algorithm- used to determine the location of the class or property that the word depicts.
 
 
-## Create an ontology for Weaviate
+### Create an ontology for Weaviate
+
 Every Weaviate instance needs to have two ontologies (also called "Semantic Schemas"), one for Things and one for Actions. The Thing schemas are used to define actual things. The Action schemas are used to define actions. These actions will also be made available to the things. For example, to execute a command.
 
 Ontologies are always class- and property-based, and classes and properties are enriched by keywords. Ontologies are defined in a <abbr>JSON</abbr> file and should contain the following information:
@@ -59,7 +75,7 @@ Ontologies are always class- and property-based, and classes and properties are 
 | `classes[].properties[].keywords[].weight`          | `array`  | `false`    | Importance of the keyword. Minimal value = `0.0`. Maximum value = `1.0` |
 
 
-### Properties
+#### Properties
 
 Properties describe classes by attaching values. Notes about properties:
 * The value in the `@dataType` array should contain on of the following values: any uppercase starting word (like `Animal`) being a cross-reference, `string`, `int`, `number`, `boolean` or `date`.
@@ -67,16 +83,17 @@ Properties describe classes by attaching values. Notes about properties:
 * Different data types can not be combined in the array.
 * Weaviate validates the schemas when initializing, giving a detailed error when some of the requirements mentioned above are not met.
 
-### Example
+#### Example
+
 Example ontology for 'Things' in a Zoo:
 
 ```json
 {
-	"@context": "http://example.org",
-	"version": "1.0.0", // semver version number of this schema (www.semver.org)
-	"type": "thing", // thing or action
+	"@context": "http://zoo.example.org",
+	"version": "1.0.0",
+	"type": "thing",
 	"name": "example.org - Thing",
-	"maintainer": "hello@creativesoftwarefdn.org", // should be email
+	"maintainer": "hello@creativesoftwarefdn.org",
 	"classes": [{
 		"class": "Animal",
 		"description": "A living thing other than a human being",
@@ -170,6 +187,7 @@ Although there is no distinction being made in the vector space between uppercas
 	- If a distinction is important in the domain, then create a new class.
 	- Classes of individual instances don't change often, so if the concept you have in mind is rather static, then create a new class for it.
 
+
 ### Naming
 
 - Class name labelling: use CamelCase (an uppercase working as delimiter) notation and the use of the singular form of nouns. e.g. AnimalSpecies.
@@ -182,5 +200,3 @@ Although there is no distinction being made in the vector space between uppercas
 - Expand abbreviations and acronyms.
 - Use a minimum amount of words for labels.
 - Include a short but complete description of the class or property, of your own or taken from an official dictionary (e.g. from [http://www.dictionary.com/](http://www.dictionary.com/)).
-
-</article>
