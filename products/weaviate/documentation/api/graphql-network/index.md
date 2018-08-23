@@ -73,7 +73,7 @@ Example request:
         properties: [{
           name: "name",
           keywords: [{
-            value: "identifyer",
+            value: "identifier",
             weight: 0.9
           }],
           certainty: 0.8,
@@ -89,7 +89,7 @@ Example request:
 }
 ```
 
-With this request, beacons that match the queried information are returned. In this case, we are looking for Animals with the name 'Bella', where we give the additional naming context information of that we mean to find classes that may also match the context of `Mammal`, and that the property `name` may also be called something in the context of `identifyer` with 0.8 on the scale of 0.0-1.0 certainty.
+With this request, beacons that match the queried information are returned. In this case, we are looking for Animals with the name 'Bella', where we give the additional naming context information of that we mean to find classes that may also match the context of `Mammal`, and that the property `name` may also be called something in the context of `identifier` with 0.8 on the scale of 0.0-1.0 certainty.
 
 
 ## Introspect function
@@ -107,7 +107,7 @@ If you want to introspect `Things` or `Actions` in the network, you need to spec
       Things(where: {
         class: [{
           name: "Animal",
-          kinds: [{
+          keywords: [{
             value: "Mammal",
             weight: 0.9
           }],
@@ -115,8 +115,8 @@ If you want to introspect `Things` or `Actions` in the network, you need to spec
         }],
         properties: [{
           name: "name",
-          kinds: [{
-            value: "identifyer",
+          keywords: [{
+            value: "identifier",
             weight: 0.9
           }],
           certainty: 0.8

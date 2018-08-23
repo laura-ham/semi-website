@@ -1,7 +1,7 @@
 ---
 layout: article-start
 title: GraphQL introduction
-description: Explanation of a GraphQL Local function.
+description: Introduction of using GraphQL to query Weaviate.
 topic: API
 tags: ['weaviate', 'API', 'GraphQL']
 video-link: 
