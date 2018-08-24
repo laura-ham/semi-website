@@ -102,7 +102,7 @@ Generic meta data about classes and its properties can be queried. Property meta
 	- `totalTrue`
 	- `percentageTrue`
 - Reference:
-	- `pointing { to }`
+	- `pointingTo`
 
 Additionally, the number of nodes in a (potentially filtered) class is avaiable. This can be queried by `meta { count }`, at the same level as the properties of the class.
 
@@ -137,9 +137,7 @@ The query below returns metadata of the nodes in the class `Animal`.
           InZoo {
             type
             count
-            pointing {
-              to
-            }
+            pointingTo
           }
           hasFeathers {
             type
